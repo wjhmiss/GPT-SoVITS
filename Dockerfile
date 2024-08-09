@@ -28,13 +28,12 @@ ARG IMAGE_TYPE=full
 COPY ./Docker /workspace/Docker 
 RUN sed -i 's/\r$//' /workspace/Docker/download.sh
 # elite 类型的镜像里面不包含额外的模型
-RUN if [ "$IMAGE_TYPE" != "elite" ]; then \
-    chmod +x /workspace/Docker/download.sh && \
-    /workspace/Docker/download.sh && \
-    python /workspace/Docker/download.py && \
-    python -m nltk.downloader averaged_perceptron_tagger cmudict; \
-    fi
+RUN chmod +x /workspace/Docker/download.sh && \
+    /workspace/Docker/download.sh
 
+RUN python /workspace/Docker/download.py
+
+RUN python -m nltk.downloader averaged_perceptron_tagger cmudict; 
 
 # Copy the rest of the application
 COPY . /workspace
