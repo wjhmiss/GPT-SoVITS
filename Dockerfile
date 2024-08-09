@@ -19,6 +19,7 @@ WORKDIR /workspace
 COPY requirements.txt /workspace/
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install -U nltk
+RUN pip install modelscope
 # Define a build-time argument for image type
 ARG IMAGE_TYPE=full
 
