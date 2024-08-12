@@ -20,7 +20,7 @@ COPY requirements.txt /workspace/
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install -U nltk
 RUN pip install modelscope
-RUN snap install aria2c
+RUN apt-get install aria2
 RUN apt install parallel
 # Define a build-time argument for image type
 ARG IMAGE_TYPE=full
